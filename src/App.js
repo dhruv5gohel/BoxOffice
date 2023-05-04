@@ -1,3 +1,4 @@
+import Error from "./components/Error";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Starred from "./components/Starred";
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/starred" element={<Starred/>}/>
+          <Route path="*" element={<Error/>}/>
         </Routes>
       </BrowserRouter>
     </>

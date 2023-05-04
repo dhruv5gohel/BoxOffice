@@ -1,38 +1,108 @@
-body{
-    margin: 0;
-    padding: 0;
-    background-color:cornsilk;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: cornsilk;
 }
 
-.nav{
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.5rem;
-    font-weight: bold;
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-a{
-    color: orange;
-    /* color: black; */
-    text-decoration: none;
+a {
+  color: orange;
+  /* color: black; */
+  text-decoration: none;
 }
 
-.nav-item:hover a{ 
-    transition: all 0.2s;
-    color: orangered;
-    text-decoration: underline;
+.nav-item:hover a {
+  transition: all 0.2s;
+  color: orangered;
+  text-decoration: underline;
 }
 
-#search{
-    display: block;
-    margin: auto;
-    margin-top: 3rem;
-    width: 14%;
-    padding: 10px 17px;
-    font-size: 16px;
-    border-radius: 15px;
+#search {
+  display: block;
+  margin: auto;
+  margin-top: 3rem;
+  width: 14%;
+  padding: 10px 17px;
+  font-size: 16px;
+  border-radius: 15px;
+}
+
+.sub {
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 4px 8px;
+  font-size: 1.25rem;
+  border-radius: 15px;
+  border: 2px solid orange;
+  background-color: white;
+}
+
+.movieCont{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+}
+
+.card {
+  width: 15rem;
+  border-radius: 15px;
+  background: grey;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  margin-top: 2.5rem;
+  height: 22.1rem;
+}
+
+.img-cont {
+  width: 90%;
+  margin: auto;
+  margin-top: 0.35rem;
+}
+
+.img-cont img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+}
+
+.content h2 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.star-icon {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px 8px;
 }
