@@ -45,6 +45,7 @@ a {
   font-size: 1.25rem;
   border-radius: 15px;
   border: 2px solid orange;
+  cursor: pointer;
   background-color: white;
 }
 
@@ -93,9 +94,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .btn {
+  cursor: pointer;
   border-radius: 5px;
   padding: 3px 6px;
 }
@@ -105,4 +108,16 @@ a {
   border: 1px solid black;
   border-radius: 10px;
   padding: 2px 8px;
+}
+
+.radio-container{
+  display: block;
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+}
+  
+.inp-radio{
+  margin-left: 1rem;
+  
 }

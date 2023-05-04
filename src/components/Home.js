@@ -1,21 +1,22 @@
 import { useState } from "react"
 import MovieItem from "./MovieItem";
-import { searchAPI } from "../api/tvMaze";
+import { searchAPI, searchActors } from "../api/tvMaze";
+import SearchForm from "./SearchForm";
 
 const Home = () => {
-  const [inpVal, setInpVal] = useState("");
-  const [movie, setMovie] = useState(null);
+  const [result, setResult] = useState(null);
   const [apiError, setApiError] = useState(null);
 
-  const handleInput = (e) => {
-    setInpVal(e.target.value);
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (searchType, inpVal) => {
     try {
-      let result = await searchAPI(inpVal);
-      setMovie(result);
+      if (searchType === "shows") {
+        let results = await searchAPI(inpVal);
+        setResult(results);
+      }
+      else {
+        let results = await searchActors(inpVal);
+        setResult(results);
+      }
     }
     catch (error) {
       setApiError(error);
@@ -27,10 +28,13 @@ const Home = () => {
       return <div>Some Error Occured</div>
     }
 
-    if (movie) {
-      return movie.map((m) => {
-        return <MovieItem key={m.show.id} title={m.show.name}/>
+    if (result) {
+      return result[0].show ? result.map((m) => {
+        return <MovieItem key={m.show.id} title={m.show.name} />
+      }) : result.map((m) => {
+        return <MovieItem key={m.person.id} title={m.person.name} />
       })
+
     }
 
     return null;
@@ -38,14 +42,9 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="search" id="search" placeholder="Enter Movie or an Actor name" onChange={handleInput} value={inpVal} />
-          <input type="submit" className="sub" value="Submit" />
-        </form>
-      </div>
+      <SearchForm handleSubmit={handleSubmit} />
       <div className="movieCont">
-        { renderAPI() }
+        {renderAPI()}
       </div>
     </>
   )
