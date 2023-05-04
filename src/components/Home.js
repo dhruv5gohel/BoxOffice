@@ -17,7 +17,7 @@ const Home = () => {
       let result = await searchAPI(inpVal);
       setMovie(result);
     }
-    catch (error) {-
+    catch (error) {
       setApiError(error);
     }
   }
