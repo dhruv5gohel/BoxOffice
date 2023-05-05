@@ -51,23 +51,27 @@ a {
 
 .movieCont{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto;
     justify-content: space-around;
 }
 
 .card {
-  width: 15rem;
+  width: 35rem;
   border-radius: 15px;
   background: grey;
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
   margin-top: 2.5rem;
-  height: 22.1rem;
+  height: 20.6rem;
+  display: flex;
 }
 
 .img-cont {
-  width: 90%;
+  width: 173%;
   margin: auto;
   margin-top: 0.35rem;
+  margin-left: 0.35rem;
+  margin-right: 0.35rem;
+  max-width: 41%;
 }
 
 .img-cont img {
@@ -75,6 +79,7 @@ a {
   object-fit: cover;
   border-radius: 15px;
   margin-top: 5px;
+  aspect-ratio: 9/12;
 }
 
 .content {
@@ -82,12 +87,19 @@ a {
   flex-direction: column;
   margin-left: 6px;
   margin-right: 6px;
+  width: 100%;
   margin-bottom: 5px;
 }
 
 .content h2 {
-  margin-top: 5px;
+  height: 15%;
+  min-height: fit-content;
+  margin-top: 17px;
   margin-bottom: 0;
+}
+
+.desc{
+  height: 12rem;
 }
 
 .button {
@@ -95,6 +107,7 @@ a {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  /* margin-top: 7rem; */
 }
 
 .btn {
@@ -108,6 +121,7 @@ a {
   border: 1px solid black;
   border-radius: 10px;
   padding: 2px 8px;
+  cursor: pointer;
 }
 
 .radio-container{

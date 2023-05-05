@@ -1,7 +1,8 @@
 import { useState } from "react"
-import MovieItem from "./MovieItem";
 import { searchAPI, searchActors } from "../api/tvMaze";
 import SearchForm from "./SearchForm";
+import ShowGrid from "./Show/ShowGrid";
+import ActorGrid from "./Actor/ActorGrid";
 
 const Home = () => {
   const [result, setResult] = useState(null);
@@ -9,14 +10,14 @@ const Home = () => {
 
   const handleSubmit = async (searchType, inpVal) => {
     try {
+      let results;
       if (searchType === "shows") {
-        let results = await searchAPI(inpVal);
-        setResult(results);
+        results = await searchAPI(inpVal);
       }
       else {
-        let results = await searchActors(inpVal);
-        setResult(results);
+        results = await searchActors(inpVal);
       }
+      setResult(results);
     }
     catch (error) {
       setApiError(error);
@@ -28,11 +29,15 @@ const Home = () => {
       return <div>Some Error Occured</div>
     }
 
+    if(result?.length === 0){
+      return <div>Results Not Found</div>
+    }
+
     if (result) {
       return result[0].show ? result.map((m) => {
-        return <MovieItem key={m.show.id} title={m.show.name} />
+        return <ShowGrid key={m.show.id} shows={m} />
       }) : result.map((m) => {
-        return <MovieItem key={m.person.id} title={m.person.name} />
+        return <ActorGrid key={m.person.id} actors={m} />
       })
 
     }
