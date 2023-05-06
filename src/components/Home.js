@@ -3,25 +3,19 @@ import { searchAPI, searchActors } from "../api/tvMaze";
 import SearchForm from "./SearchForm";
 import ShowGrid from "./Show/ShowGrid";
 import ActorGrid from "./Actor/ActorGrid";
+import { useQuery } from "react-query";
 
 const Home = () => {
-  const [result, setResult] = useState(null);
-  const [apiError, setApiError] = useState(null);
+  const [filter, setFilter] = useState(null);
+
+  const { data: result, error: apiError } = useQuery({
+    queryKey: ["search", filter],
+    queryFn: () => filter.searchType === "shows" ? searchAPI(filter.inpVal) : searchActors(filter.inpVal),
+    enabled: !!filter
+  });
 
   const handleSubmit = async (searchType, inpVal) => {
-    try {
-      let results;
-      if (searchType === "shows") {
-        results = await searchAPI(inpVal);
-      }
-      else {
-        results = await searchActors(inpVal);
-      }
-      setResult(results);
-    }
-    catch (error) {
-      setApiError(error);
-    }
+    setFilter({searchType, inpVal})
   }
 
   const renderAPI = () => {

@@ -1,26 +1,32 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchShowMain } from "../api/tvMaze";
+import { useQuery } from "react-query";
 
 const Show = () =>{
     const { showId } = useParams();
 
-    const [showData, setShowData] = useState(null);
-    const [showError, setShowError] = useState(null);
+    // const [showData, setShowData] = useState(null);
+    // const [showError, setShowError] = useState(null);
 
-    useEffect(()=>{
-        async function fetchData(){
-            try{
-                let result = await searchShowMain(showId);
-                setShowData(result);
-            }
-            catch (error){
-                setShowError(error);
-            }
+    // useEffect(()=>{
+    //     async function fetchData(){
+    //         try{
+    //             let result = await searchShowMain(showId);
+    //             setShowData(result);
+    //         }
+    //         catch (error){
+    //             setShowError(error);
+    //         }
 
-        }
-        fetchData();
-    },[showId])
+    //     }
+    //     fetchData();
+    // },[showId])
+
+    const {data: showData, error: showError} = useQuery({
+        queryKey: ["show", showId],
+        queryFn: () => searchShowMain(showId),
+    });
     
     if(showError){
         return <div>Some Error Occured: {showError}</div>
