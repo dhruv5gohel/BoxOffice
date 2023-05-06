@@ -14,9 +14,9 @@ function App() {
           <Route path="/" element={<Navbar />}>
             <Route path="/" element={<Home />} />
             <Route path="/starred" element={<Starred />} />
-            <Route path="*" element={<Error />} />
           </Route>
-        <Route path="/show/:showId" element={<Show />} />
+          <Route path="*" element={<Error />} />
+          <Route path="/show/:showId" element={<Show />} />
         </Routes>
       </BrowserRouter>
     </>

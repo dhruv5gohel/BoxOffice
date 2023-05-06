@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ShowGrid = ({ shows }) => {
 
     return (
@@ -9,7 +11,7 @@ const ShowGrid = ({ shows }) => {
                 <h2 className="title">{shows.show.name}</h2>
                 <p className="desc">{shows.show.summary?(shows.show.summary.replace(/[<p></p><b></b>]/g, "")).split(' ').slice(0,40).join(" "):"No Summary Available"}</p>
                 <div className="button">
-                    <button className="btn">Read More</button>
+                    <Link type="button" to={`/show/${shows.show.id}`} className="btn">Read More</Link>
                     <div>
                         <button className="star-icon"><i className="fa-regular fa-star"></i></button>
                     </div>
