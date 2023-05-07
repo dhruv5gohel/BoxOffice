@@ -11,7 +11,8 @@ const Home = () => {
   const { data: result, error: apiError } = useQuery({
     queryKey: ["search", filter],
     queryFn: () => filter.searchType === "shows" ? searchAPI(filter.inpVal) : searchActors(filter.inpVal),
-    enabled: !!filter
+    enabled: !!filter,
+    refetchOnWindowFocus: false
   });
 
   const handleSubmit = async (searchType, inpVal) => {
