@@ -49,10 +49,10 @@ a {
   background-color: white;
 }
 
-.movieCont{
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-around;
+.movieCont {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-around;
 }
 
 .card {
@@ -98,7 +98,7 @@ a {
   margin-bottom: 0;
 }
 
-.desc{
+.desc {
   height: 12rem;
 }
 
@@ -124,14 +124,68 @@ a {
   cursor: pointer;
 }
 
-.radio-container{
+.radio-container {
   display: block;
   text-align: center;
   margin-top: 1.25rem;
   font-size: 1.25rem;
 }
-  
-.inp-radio{
+
+.inp-radio {
   margin-left: 1rem;
-  
+}
+
+.container {
+  /* margin: 3rem 7rem; */
+  display: flex;
+}
+
+.container img {
+  width: 27%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+}
+
+.info-container {
+  margin-left: 6rem;
+  font-size: 1.5rem;
+}
+
+.info-container h1 {
+  font-size: 4rem;
+  margin-bottom: 0;
+}
+
+.lang {
+  margin-top: 0;
+}
+
+.container span {
+  font-size: 1rem;
+  margin: 0px 3px;
+  border: 2px solid blue;
+  border-radius: 20px;
+  padding: 3px 6px;
+  background-color: aqua;
+}
+
+.details-container {
+  /* margin: 3rem 7rem; */
+  font-size: 1.25rem;
+}
+
+.details-container h1{
+  font-size: 2rem;
+}
+
+.cast-grid{
+  display: grid;
+  width: 90%;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.cast-img{
+  border-radius: 15px;
+  width: 90%;
 }

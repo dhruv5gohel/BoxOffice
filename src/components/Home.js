@@ -15,7 +15,7 @@ const Home = () => {
   });
 
   const handleSubmit = async (searchType, inpVal) => {
-    setFilter({searchType, inpVal})
+    setFilter({ searchType, inpVal })
   }
 
   const renderAPI = () => {
@@ -23,7 +23,7 @@ const Home = () => {
       return <div>Some Error Occured</div>
     }
 
-    if(result?.length === 0){
+    if (result?.length === 0) {
       return <div>Results Not Found</div>
     }
 
