@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ShowItem = ({ image, title, desc, id, handleStar}) => {
+const ShowItem = ({ image, title, desc, id, handleStar, isStarred }) => {
     return (
         <div className="card">
             <div className="img-cont">
@@ -12,7 +12,7 @@ const ShowItem = ({ image, title, desc, id, handleStar}) => {
                 <div className="button">
                     <Link type="button" to={`/show/${id}`} className="btn">Read More</Link>
                     <div>
-                        <button className="star-icon" onClick={()=>handleStar(id)}><i className="fa-regular fa-star"></i></button>
+                        <button className="star-icon" onClick={()=>handleStar(id)} style={{backgroundColor: isStarred?"yellow":"white"}}><i className="fa-regular fa-star"></i></button>
                     </div>
                 </div>
             </div>

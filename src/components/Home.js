@@ -1,34 +1,10 @@
-import { useState, useReducer, useEffect } from "react"
+import { useState } from "react"
 import { searchAPI, searchActors } from "../api/tvMaze";
 import SearchForm from "./SearchForm";
 import ShowGrid from "./Show/ShowGrid";
 import ActorGrid from "./Actor/ActorGrid";
 import { useQuery } from "react-query";
-
-const usePersistedState = (reducer, initialState, localStorageKey) => {
-  const [state, dispatch] = useReducer(reducer, initialState, initial => {
-    const previousValue = localStorage.getItem(localStorageKey);
-
-    return previousValue ? JSON.parse(previousValue) : initial;
-  })
-
-  useEffect(()=>{
-    localStorage.setItem(localStorageKey, JSON.stringify(state));
-  }, [state, localStorageKey]);
-
-  return [state, dispatch];
-}
-
-const starredReducer = (currentState, action ) =>{
-  switch(action.type){
-      case 'STAR': 
-          return currentState.concat(action.showId);
-      case 'UNSTAR':
-          return currentState.filter(showId => showId !== action.showId);
-      default: 
-          return currentState;
-  }
-}
+import { useStarredShow } from "../lib/useStarredShow";
 
 const Home = () => {
   const [filter, setFilter] = useState(null);
@@ -44,19 +20,18 @@ const Home = () => {
     setFilter({ searchType, inpVal })
   }
 
-  const [starredShow, dispatchStarred] = usePersistedState(starredReducer, [], "StarredShows");
+  const [starredShow, dispatchStarred] = useStarredShow();
 
-    const handleStar = (showId) => {
-        const isStarred = starredShow.includes(showId);
-        
-        if(isStarred){
-            dispatchStarred({ type: 'UNSTAR', showId});
-        }
-        else{
-            dispatchStarred({ type: 'STAR', showId});
-        }
-      }
-      console.log({starredShow})
+  const handleStar = (showId) => {
+    const isStarred = starredShow.includes(showId);
+
+    if (isStarred) {
+      dispatchStarred({ type: 'UNSTAR', showId });
+    }
+    else {
+      dispatchStarred({ type: 'STAR', showId });
+    }
+  }
 
   const renderAPI = () => {
     if (apiError) {
@@ -69,7 +44,7 @@ const Home = () => {
 
     if (result) {
       return result[0].show ? result.map((m) => {
-        return <ShowGrid key={m.show.id} shows={m} handleStar={handleStar}/>
+        return <ShowGrid key={m.show.id} shows={m} handleStar={handleStar} starredShow={starredShow} />
       }) : result.map((m) => {
         return <ActorGrid key={m.person.id} actors={m} />
       })
