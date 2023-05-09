@@ -11,9 +11,9 @@ const ActorGrid = ({ actors }) => {
                     <p></p>
                 </p>
                 <div className="button">
-                    <button className="btn">Read More</button>
+                    {/* <button className="btn">Read More</button> */}
                     <div>
-                        <button className="star-icon"><i className="fa-regular fa-star"></i></button>
+                        {/* <button className="star-icon"><i className="fa-regular fa-star"></i></button> */}
                     </div>
                 </div>
             </div>

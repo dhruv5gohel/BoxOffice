@@ -28,11 +28,6 @@ const Starred = () => {
         }
     }
 
-    // useEffect(()=>{
-    //     // console.log("Item removed")
-        
-    // },[starredShowIds])
-
     if(starredShows?.length === 0){
         return <div>No Starred Show</div>
     }
