@@ -22,7 +22,7 @@ function App() {
             <Route path="*" element={<Error />} />
             <Route path="/show/:showId" element={<Show />} />
           </Routes>
-        </Hash>
+        </HashRouter>
       </QueryClientProvider>
     </>
   );
