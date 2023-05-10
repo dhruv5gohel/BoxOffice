@@ -1,8 +1,6 @@
 import { useQuery } from "react-query";
 import { searchStarred } from "../api/tvMaze";
 import { useStarredShow } from "../lib/useStarredShow";
-// import ShowItem from "./Show/ShowItem";
-// import { useEffect } from "react";
 import ShowGrid from "./Show/ShowGrid";
 
 const Starred = () => {
@@ -12,7 +10,6 @@ const Starred = () => {
     const { data: starredShows, error: starredShowsError } = useQuery({
         queryKey: ["starred", starredShowIds],
         queryFn: () => searchStarred(starredShowIds).then(result => result.map(show => ({show}))),
-        // refetchOnWindowFocus: false
     });
 
     const [starredShow, dispatchStarred] = useStarredShow();
@@ -29,7 +26,7 @@ const Starred = () => {
     }
 
     if(starredShows?.length === 0){
-        return <div>No Starred Show</div>
+        return <div style={{textAlign: "center"}}>No Starred Show</div>
     }
     if (starredShowsError) {
         return <div>Some Error Occured</div>
