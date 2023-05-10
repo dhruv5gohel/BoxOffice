@@ -190,6 +190,10 @@ a {
   width: 90%;
 }
 
+.show-main{
+  margin: 3rem 7rem;
+}
+
 @media screen and (max-width: 1150px) {
   .movieCont {
     grid-template-columns: auto;
@@ -222,5 +226,8 @@ a {
   }
   .cast-grid{
     grid-template-columns: auto  auto;
+  }
+  .show-main{
+    margin: 1rem 3rem;
   }
 }

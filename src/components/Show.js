@@ -19,7 +19,7 @@ const Show = () => {
     }
 
     if (showData) {
-        return <div style={{ margin: "3rem 7rem" }}>
+        return <div className="show-main">
             <Link to="/">Go back to Home</Link>
             <ShowMain image={showData.image} name={showData.name} language={showData.language} genre={showData.genres} rating={showData.rating} summary={showData.summary} />
             <ShowDetails country={showData.network?showData.network.country.name:""} premiered={showData.premiered} status={showData.status} episodes={showData._embedded.episodes} />
